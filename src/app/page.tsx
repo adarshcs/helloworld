@@ -3,7 +3,7 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";  // Import signIn, signOut, and useSession
-import Image from "next/image";  // Import Image component for displaying images
+
 
 export default function Home() {
   const { data: session } = useSession();
