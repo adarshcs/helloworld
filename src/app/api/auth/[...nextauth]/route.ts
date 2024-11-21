@@ -2,9 +2,9 @@
 
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+// Define the GET and POST handlers for NextAuth
+export async function GET() {
   return NextAuth({
     providers: [
       GoogleProvider({
@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
   });
 }
 
-export async function POST(req: NextRequest) {
+export async function POST() {
   return NextAuth({
     providers: [
       GoogleProvider({
