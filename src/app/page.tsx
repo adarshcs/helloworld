@@ -1,4 +1,7 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+// src/app/page.tsx
+
+import { signIn, useSession } from "next-auth/react";
+import Image from "next/image";
 
 export default function Home() {
   const { data: session } = useSession();
@@ -8,7 +11,13 @@ export default function Home() {
       {session ? (
         <>
           <h1>Welcome, {session.user?.name}!</h1>
-          <img src={session.user?.image} alt="User image" />
+          {/* Use Image component for better performance */}
+          <Image 
+            src={session.user?.image || "/default-image.jpg"} 
+            alt="User image" 
+            width={100} 
+            height={100} 
+          />
           <button onClick={() => signOut()}>Sign out</button>
         </>
       ) : (
