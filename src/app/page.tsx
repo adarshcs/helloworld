@@ -1,28 +1,11 @@
 // src/app/page.tsx
-
-"use client"; // This tells Next.js to treat this file as client-side only
-
-import { signIn, signOut, useSession } from "next-auth/react";  // Import signIn, signOut, and useSession
+import SessionComponent from "./SessionComponent"; // Import the new session component
 
 export default function Home() {
-  const { data: session, status } = useSession();
-
-  // Check if the session data is still loading
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
-
   return (
     <>
       <h1>Hello From LooperCode!!</h1>
-      {!session ? (
-        <button onClick={() => signIn("google")}>Sign in with Google</button>
-      ) : (
-        <>
-          <p>Welcome, {session.user?.name}</p>
-          <button onClick={() => signOut()}>Sign out</button>
-        </>
-      )}
+      <SessionComponent /> {/* Use the SessionComponent */}
     </>
   );
 }
