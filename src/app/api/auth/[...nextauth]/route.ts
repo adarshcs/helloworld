@@ -1,23 +1,37 @@
+// src/app/api/auth/[...nextauth]/route.ts
+
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
-import { NextRequest } from "next/server";
-
-export const authOptions = {
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
-  ],
-  pages: {
-    signIn: "/auth/signin", // Optional: customize the sign-in page
-  },
-};
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {
-  return NextAuth(req, authOptions);
+  const result = await NextAuth(req, {
+    providers: [
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID!,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      }),
+    ],
+    pages: {
+      signIn: "/auth/signin", // Optional: customize the sign-in page
+    },
+  });
+
+  return NextResponse.json(result);
 }
 
 export async function POST(req: NextRequest) {
-  return NextAuth(req, authOptions);
+  const result = await NextAuth(req, {
+    providers: [
+      GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID!,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      }),
+    ],
+    pages: {
+      signIn: "/auth/signin", // Optional: customize the sign-in page
+    },
+  });
+
+  return NextResponse.json(result);
 }
