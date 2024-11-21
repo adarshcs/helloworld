@@ -1,6 +1,6 @@
 // src/app/page.tsx
 
-"use client";
+"use client"; // This tells Next.js to treat this file as client-side only
 
 import { signIn, signOut, useSession } from "next-auth/react";  // Import signIn, signOut, and useSession
 
