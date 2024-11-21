@@ -1,6 +1,6 @@
-// src/app/api/auth/[...nextauth]/route.ts
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import { NextRequest, NextResponse } from "next/server";
 
 export const authOptions = {
   providers: [
@@ -10,10 +10,14 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/auth/signin", // Optional: custom sign-in page
+    signIn: "/auth/signin", // Optional: customize the sign-in page
   },
 };
 
-const handler = NextAuth(authOptions);
+export async function GET(req: NextRequest) {
+  return NextAuth(req, authOptions);
+}
 
-export { handler as GET, handler as POST };
+export async function POST(req: NextRequest) {
+  return NextAuth(req, authOptions);
+}
