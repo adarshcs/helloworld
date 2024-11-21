@@ -3,14 +3,10 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";  // Import signIn, signOut, and useSession
+import Image from "next/image";  // Import Image component for displaying images
 
 export default function Home() {
-  const { data: session, status } = useSession();
-
-  // Check if the session data is still loading
-  if (status === "loading") {
-    return <div>Loading...</div>;
-  }
+  const { data: session } = useSession();
 
   return (
     <>
