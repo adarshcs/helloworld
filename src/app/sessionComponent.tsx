@@ -1,4 +1,4 @@
-// src/app/SessionComponent.tsx
+// src/app/SessionComponent.tsx  ..
 "use client";  // This makes sure the component runs on the client side
 
 import { signIn, signOut, useSession } from "next-auth/react";
