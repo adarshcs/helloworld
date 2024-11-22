@@ -10,6 +10,9 @@ export default function SessionComponent() {
   if (status === "loading") {
     return <div>Loading...</div>;
   }
+  if (!session) {
+    return <p>You are not signed in. Please sign in to continue.</p>;
+  }
 
   return (
     <>
